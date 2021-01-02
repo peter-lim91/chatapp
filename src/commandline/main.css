@@ -1,0 +1,36 @@
+body {
+  background-color: black;
+}
+
+.line {
+  display: flex;
+  align-items: start;
+  /* margin: 20px; */
+}
+
+.line, .line textarea {
+  background-color: black;
+  /* background-color: gray; */
+  color: rgb(0, 218, 0);
+  font-size: 20px;
+}
+
+.command {
+
+}
+
+.respones {
+  
+}
+
+textarea, textarea:focus {
+  /* caret-color: black; */
+  border: 0px;
+  outline: none;
+  width: 95%;
+  resize: none;
+  overflow: hidden;
+  height: auto;
+  padding: 0px 0px 0px 5px;
+  min-width: 400px;
+}

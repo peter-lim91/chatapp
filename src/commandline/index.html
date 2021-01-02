@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<head>
+  <script src="script.js"></script>
+  <script src="websocket.js"></script>
+  <link rel="stylesheet" href='main.css'>
+</head>
+<body>
+  <template>
+    <div class='line' id='command'>
+      <span>></span><textarea rows='1' oninput='autoGrow(this);' onfocusout='refocus(this);' disabled></textarea>
+    </div>
+  </template>
+</body>
