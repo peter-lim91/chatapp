@@ -1,19 +1,14 @@
 const express = require('express');
 const WebSocket = require('ws');
-// const cors = require('cors');
-const path = require('path');
-// const { v4: uuidv4 } = require('uuid');
 const { EventEmitter } = require('events');
 
 
+const PORT = process.env.PORT || 3000;
 const app = express();
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log('listening on port ' + port));
+app.listen(PORT, () => console.log('listening on port ' + PORT));
 app.use(express.static('src/commandline'));
   
-const wss = new WebSocket.Server({
-  port: 8080,
-});
+const wss = new WebSocket.Server({ server: app });
 
 const rooms = [{
   roomName: 'default',
@@ -23,6 +18,7 @@ const rooms = [{
 const wsmessage = new EventEmitter();
 
 wss.on('connection', (ws) => {
+  console.log('a connection');
   ws.room = rooms[0];
   ws.room.clients.push(ws);
   ws.send('What is your Name?');
@@ -48,7 +44,6 @@ wss.on('connection', (ws) => {
             }
           }
           console.log(clients());
-          // ws.send(rooms.clients.toString());
           break;
         default:
           wsmessage.emit('messagereceived', ws, message);
