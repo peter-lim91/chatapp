@@ -16,7 +16,7 @@ function getNewLine() {
 }
 
 function checkForEnter(e) {
-  if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+  if (e.code === 'Enter' || e.code === 'NumpadEnter' || e.key === 'Enter') {
     e.preventDefault();
     line.evaluate();
   } else if (e.code === 'ArrowUp' || e.code === 'ArrowDown') {
