@@ -5,10 +5,19 @@ const { EventEmitter } = require('events');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.listen(PORT, () => console.log('listening on port ' + PORT));
+const server = app.listen(PORT, () => console.log('listening on port ' + PORT));
+app.get('/', (req, res, next) => {
+  next();
+})
 app.use(express.static('src/commandline'));
+
+server.on('upgrade', (req, socket, head) => {
+  wss.handleUpgrade(req, socket, head, (ws) => {
+    wss.emit('connection', ws, req)
+  })
+})
   
-const wss = new WebSocket.Server({ server: app });
+const wss = new WebSocket.Server({ noServer: true });
 
 const rooms = [{
   roomName: 'default',
