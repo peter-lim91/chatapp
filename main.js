@@ -61,7 +61,7 @@ wss.on('connection', (ws) => {
   });
 
   wsmessage.on('messagereceived', (sender, message) => {
-    if (ws.acceptMessages && ws !== sender) {
+    if (ws.acceptMessages && ws !== sender && ws.room === sender.room) {
       ws.send(sender.name + ': ' + message);
     }
   })  
