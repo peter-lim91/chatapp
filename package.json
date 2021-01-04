@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js"
-
   },
   "repository": {
     "type": "git",
@@ -19,7 +18,9 @@
   },
   "homepage": "https://github.com/peter-lim91/chatapp#readme",
   "dependencies": {
+    "bufferutil": "^4.0.3",
     "express": "^4.17.1",
+    "utf-8-validate": "^5.0.4",
     "ws": "^7.4.2"
   }
 }
